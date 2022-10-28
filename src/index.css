@@ -1,13 +1,107 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange-100: hsl(25, 100%, 94%);
+  --orange-200: hsl(26, 100%, 55%);
+  --blue-100: hsl(223, 64%, 98%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  @apply font-kumbhSans text-base text-blue-300 bg-white;
+}
+
+/* navbar */
+.nav-links {
+  @apply relative lg:text-lg block px-[1em] py-[2em];
+}
+
+.nav-links:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--orange-200);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.nav-links:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+/* content */
+.primary-btn {
+  box-shadow: 0px 16px 33px 4px var(--orange-100);
+  -webkit-box-shadow: 0px 16px 33px 4px var(--orange-100);
+  -moz-box-shadow: 0px 16px 33px 4px var(--orange-100);
+}
+
+.active-thumbnail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(223, 64%, 98%);
+  opacity: 0.5;
+}
+
+.thumbnail:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(223, 64%, 98%);
+  opacity: 0.5;
+}
+
+/* scrollbar */
+
+.lightbox::-webkit-scrollbar {
+  display: none;
+}
+
+.lightbox {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* cart */
+.cart {
+  box-shadow: 0px 15px 46px -17px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 15px 46px -17px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 15px 46px -17px rgba(0, 0, 0, 0.5);
+}
+
+/* lightbox */
+
+.lightbox-closeBtn path {
+  fill: var(--blue-100);
+}
+
+.lightbox-closeBtn:hover path {
+  fill: var(--orange-200);
+}
+
+.lightbox-prevBtn svg {
+  translate: -2px;
+}
+
+.lightbox-nextBtn svg {
+  translate: 2px;
+}
+
+.lightbox-prevBtn:hover path,
+.lightbox-nextBtn:hover path {
+  stroke: var(--orange-200);
 }
