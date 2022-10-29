@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/Tuason066/ecommerce-product-page](https://github.com/Tuason066/ecommerce-product-page)
-- Live Site URL: [https://tuason066.github.io/ecommerce-product-page](https://tuason066.github.io/ecommerce-product-page)
+- Live Site URL: [https://tuason-ecommerce-product-page.netlify.app/](https://tuason-ecommerce-product-page.netlify.app/)
 
 ### Built with
 
