@@ -2,8 +2,6 @@ import product from '../product';
 import { useGlobalContext } from '../context';
 import svg from '../svg';
 
-/* WORK ON LIGHTBOX ACTIVE STATES */
-
 function Lightbox() {
   const { images } = product;
   const { setIsLightbox, slides, dispatchSlides } = useGlobalContext();

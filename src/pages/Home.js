@@ -58,6 +58,7 @@ function Home() {
                 <img
                   onClick={handleClick}
                   key={i}
+                  title={`${windowWidth >= 768 ? 'open lightbox' : ''}`}
                   className={`${position} ${
                     windowWidth >= 768 ? 'cursor-pointer' : ''
                   } col-start-1 col-end-2 row-start-1 row-end-1 md:rounded-2xl lg:rounded-3xl`}

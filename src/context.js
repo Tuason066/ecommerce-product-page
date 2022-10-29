@@ -1,6 +1,12 @@
-import { useEffect } from 'react';
-import { createContext, useContext, useReducer, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useState,
+  useEffect,
+} from 'react';
 import product from './product';
+
 const AppContext = createContext();
 
 /* slides */
@@ -81,6 +87,8 @@ const cartReducer = (cart, action) => {
   }
 };
 
+/* keypressed */
+
 const AppProvider = ({ children }) => {
   const [isAsideMenu, setIsAsideMenu] = useState(false);
   const [isLightbox, setIsLightbox] = useState(false);
@@ -95,6 +103,38 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
+
+  /* keypress */
+  useEffect(() => {
+    const handleKeydown = (e) => {
+      switch (e.key) {
+        case 'Escape':
+          setIsLightbox(false);
+          setIsAsideMenu(false);
+          break;
+
+        case 'ArrowRight':
+          isLightbox
+            ? dispatchSlides({ type: 'LIGHTBOX', payload: 'increase' })
+            : dispatchSlides({ type: 'MAIN', payload: 'increase' });
+
+          break;
+
+        case 'ArrowLeft':
+          isLightbox
+            ? dispatchSlides({ type: 'LIGHTBOX', payload: 'decrease' })
+            : dispatchSlides({ type: 'MAIN', payload: 'decrease' });
+          break;
+
+        default:
+          break;
+      }
+    };
+
+    document.addEventListener('keydown', handleKeydown);
+
+    return () => document.removeEventListener('keydown', handleKeydown);
+  });
 
   return (
     <AppContext.Provider
